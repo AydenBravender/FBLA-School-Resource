@@ -46,6 +46,6 @@ The user interface of the application is composed of a window and various widget
 
 The application can generate a custom report that outlines the date and details about business/community partners. This report is created as a .txt file in the user’s choice of directory.
 
-### Data Visulation
+### Data Visualization
 
 The application provides data visualization in the form of two pie charts, created using matplotlib. These charts display the distribution of resources and types of organizations available to the school. This feature allows users to gain a quick understanding of the data at a glance.
