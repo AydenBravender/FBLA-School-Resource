@@ -34,13 +34,30 @@ Google Sheets serves as a backup data storage option due to its cloud-based natu
 SQLITE3 is the primary form of storage for this application. It was chosen for its efficiency and ease in finding, appending, and removing objects from a SQL table.
 
 ## User Interface
-The user interface of the application is composed of a window and various widgets. More details about these components will be added soon.
-### Window
 
-### Widgets
+### Scrollable Frame
 
+### Checkboxes
 
-## Features
+### Entries
+
+### Option Menus
+
+### Buttons
+
+## Functions
+
+### Update
+Update the SQL database with data from google sheets. It removes duplicates in database.
+
+### Add Row
+The user can add a row to both the SQL database and google sheets in one step.
+
+### Delete Row
+checkboxes are found on each row of data, you can click which rows you want to delete, click the delete button and they are removed from both the SQL database as well as google sheets.
+
+### Search
+Using the search bar along side 2 filters for ```type``` and ```resource``` the user can effeciently search the entire database.
 
 ### Generating Report
 
