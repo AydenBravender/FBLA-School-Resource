@@ -49,15 +49,13 @@ Checkboxes are found on each row of data. Users can select which rows they want 
 The ‘Search’ function, alongside two filters for ```type``` and ```resource```, allows users to efficiently search the entire database.
 
 ### Report Generation
-
-The application can generate a custom report that outlines the date and details about business/community partners. This report is created as a .txt file in the user’s choice of directory.
+FBLA Finder strongly encourages you to use this advanced feature that allows the user to generate a custom report that outlines the date and details about business/community partners. This report is created as a .txt file in the user’s choice of directory. 
 
 ### Data Visualization
 The application provides data visualization in the form of two pie charts, created using matplotlib. These charts display the distribution of resources and types of organizations available to the school. This feature allows users to gain a quick understanding of the data at a glance.
 
-## Advanced Features for FBLA Finder
+## Future Features for FBLA Finder
 
-FBLA Finder strongly encourages you to include advanced features such as:
 ### Gmail Linked Sign-in Page
 To ensure a secure and personalized user experience, our platform could feature a sign-in/sign-up page linked to Gmail. This would allow users to create an account using their existing Gmail credentials. If a user does not have an account, an authorization request would be sent to the career center. Upon approval from the career center, the user would be able to sign in and access the platform’s resources.
 
