@@ -6,7 +6,7 @@ This project was developed for the 2024 FBLA Canadian Competition. The challenge
 
 In response to this task, I created a Graphical User Interface (GUI) using customtkinter and Python. The data for this application is stored in two separate locations: Google Sheets and a SQL database. The application also includes additional features such as generating a report and displaying pie charts of the data.
 
-// Image //
+![image](https://github.com/AydenBravender/FBLA-School-Resource/blob/main/images/WindowGUI.jpg)
 
 ## Data Storage
 
@@ -33,7 +33,7 @@ Google Sheets serves as a backup data storage option due to its cloud-based natu
 
 ### Data Storage In SQLITE3
 
-SQLITE3 is the primary form of storage for this application. It was chosen for its efficiency and ease in finding, appending, and removing objects from a SQL table. SQL requests were made to prohibit the use of SQL intections through the use of place holders ```?```.
+SQLITE3 is the primary form of storage for this application. It was chosen for its efficiency and ease in finding, appending, and removing objects from a SQL table. SQL requests were made to prohibit the use of SQL intections through the use of place holders such as: ```?```.
 
 ## Functions
 
