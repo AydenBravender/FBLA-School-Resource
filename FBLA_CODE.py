@@ -158,17 +158,53 @@ def update_function():
     # Commit the changes to the database
     conn.commit()
 
+def show_warning():
+    toplevel = customtkinter.CTkToplevel()  # master argument is optional
+    toplevel.geometry("400x300")
+    label = customtkinter.CTkLabel(toplevel, text="ToplevelWindow")
+    label.pack(padx=20, pady=20)
+    toplevel.toplevel_window.focus() 
+    
+
+def input_check(input):
+    acceptable_char = ['+', '-', '#', '/', '.', '@']
+    
+    # Convert input to string
+    try:
+        input = str(input)
+    except Exception as e:
+        input = ""
+        show_warning()
+        return input
+    
+    # Check length of input
+    length = len(input)
+    if length > 40:
+        input = ""
+        show_warning()
+        return input
+    
+    # Check each character in input
+    for char in input:
+        if not char.isalpha() and char not in acceptable_char:
+            input = ""
+            show_warning()
+            return input
+        
+    return input
+
+
 
 def add_row_function():
     global conn  
     local_conn = connect_to_database(db_path)
     c = local_conn.cursor()
     
-    obj = SchoolResource(name_entry.get(), 
-                         optionmenu_type_add_row.get(), 
-                         optionmenu_resources_add_row.get(), 
-                         website_entry.get(), gmail_entry.get(), 
-                         phone_entry.get())
+    obj = SchoolResource(input_check(name_entry.get()), 
+                         input_check(optionmenu_type_add_row.get()), 
+                         input_check(optionmenu_resources_add_row.get()), 
+                         input_check(website_entry.get()), input_check(gmail_entry.get()), 
+                         input_check(phone_entry.get()))
     
     # check if the resource is already in google sheets
     try: 
@@ -238,27 +274,27 @@ def search_function():
     result_list = []  # Initialize an empty list to store results
 
     # Search Query taking inout from search bar and filters
-    if optionmenu_resources.get() == 'All':
-        if optionmenu_type.get() == 'All':
+    if input_check(optionmenu_resources.get()) == 'All':
+        if input_check(optionmenu_type.get()) == 'All':
             c.execute(
                 "SELECT * FROM resources WHERE (name LIKE ? OR website LIKE ? OR gmail LIKE ? OR phone LIKE ?)",
-                ('%' + search_entry.get() + '%', '%' + search_entry.get() + '%', '%' + search_entry.get() + '%',
-                 '%' + search_entry.get() + '%'))
+                ('%' + input_check(search_entry.get()) + '%', '%' + input_check(search_entry.get()) + '%', '%' + input_check(search_entry.get()) + '%',
+                 '%' + input_check(search_entry.get()) + '%'))
         else:
             c.execute(
                 "SELECT * FROM resources WHERE (name LIKE ? OR website LIKE ? OR gmail LIKE ? OR phone LIKE ?) AND type = ?",
-                ('%' + search_entry.get() + '%', '%' + search_entry.get() + '%', '%' + search_entry.get() + '%',
-                 '%' + search_entry.get() + '%', optionmenu_type.get()))
-    elif optionmenu_type.get() == 'All':
+                ('%' + input_check(search_entry.get()) + '%', '%' + input_check(search_entry.get()) + '%', '%' + input_check(search_entry.get()) + '%',
+                 '%' + input_check(search_entry.get()) + '%', input_check(optionmenu_type.get())))
+    elif input_check(optionmenu_type.get()) == 'All':
         c.execute(
             "SELECT * FROM resources WHERE (name LIKE ? OR website LIKE ? OR gmail LIKE ? OR phone LIKE ?) AND resource = ?",
-            ('%' + search_entry.get() + '%', '%' + search_entry.get() + '%', '%' + search_entry.get() + '%',
-             '%' + search_entry.get() + '%', optionmenu_resources.get()))
+            ('%' + input_check(search_entry.get()) + '%', '%' + input_check(search_entry.get()) + '%', '%' + input_check(search_entry.get()) + '%',
+             '%' + input_check(search_entry.get()) + '%', input_check(optionmenu_resources.get())))
     else:
         c.execute(
             "SELECT * FROM resources WHERE (name LIKE ? OR website LIKE ? OR gmail LIKE ? OR phone LIKE ?) AND resource = ? AND type = ?",
-            ('%' + search_entry.get() + '%', '%' + search_entry.get() + '%', '%' + search_entry.get() + '%',
-             '%' + search_entry.get() + '%', optionmenu_resources.get(), optionmenu_type.get()))
+            ('%' + input_check(search_entry.get()) + '%', '%' + input_check(search_entry.get()) + '%', '%' + input_check(search_entry.get()) + '%',
+             '%' + input_check(search_entry.get()) + '%', input_check(optionmenu_resources.get()), input_check(optionmenu_type.get())))
 
     result_list = c.fetchall()  # Fetch all the results and store in result_list
     conn.close()
