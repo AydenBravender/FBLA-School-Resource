@@ -1,4 +1,5 @@
 import customtkinter
+import tkinter as tk
 from PIL import Image 
 import os
 import matplotlib
@@ -158,17 +159,20 @@ def update_function():
     # Commit the changes to the database
     conn.commit()
 
-def show_warning():
-    toplevel = customtkinter.CTkToplevel()  # master argument is optional
-    toplevel.geometry("400x300")
-    label = customtkinter.CTkLabel(toplevel, text="ToplevelWindow")
-    label.pack(padx=20, pady=20)
-    toplevel.toplevel_window.focus() 
-    
 
-def input_check(input):
-    acceptable_char = ['+', '-', '#', '/', '.', '@']
+def show_warning():
+    error_window = tk.Toplevel()
+    error_window.title("Error")
+    error_window.geometry("300x100")
+    error_label = tk.Label(error_window, text="Error: Invalid Input!")
+    error_label.pack(padx=20, pady=20)
+    # Set the window to be always on top
+    error_window.attributes("-topmost", True)
+    error_window.lift()
     
+    
+def input_check(input):
+    acceptable_char = ['+', '-', '#', '/', '.', '@', '(', ')']
     # Convert input to string
     try:
         input = str(input)
@@ -176,23 +180,22 @@ def input_check(input):
         input = ""
         show_warning()
         return input
-    
+
     # Check length of input
     length = len(input)
     if length > 40:
         input = ""
         show_warning()
         return input
-    
+
     # Check each character in input
     for char in input:
-        if not char.isalpha() and char not in acceptable_char:
+        if not char.isalpha() and not char.isdigit() and char not in acceptable_char:
             input = ""
             show_warning()
             return input
-        
-    return input
 
+    return input
 
 
 def add_row_function():
