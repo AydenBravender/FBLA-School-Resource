@@ -170,28 +170,28 @@ def show_warning():
     error_window.attributes("-topmost", True)
     error_window.lift()
     
-    
+
 def input_check(input):
     acceptable_char = ['+', '-', '#', '/', '.', '@', '(', ')']
     # Convert input to string
     try:
         input = str(input)
     except Exception as e:
-        input = ""
+        input = "Invalid"
         show_warning()
         return input
 
     # Check length of input
     length = len(input)
     if length > 40:
-        input = ""
+        input = "Invalid"
         show_warning()
         return input
 
     # Check each character in input
     for char in input:
         if not char.isalpha() and not char.isdigit() and char not in acceptable_char:
-            input = ""
+            input = "Invalid"
             show_warning()
             return input
 
