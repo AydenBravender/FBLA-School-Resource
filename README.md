@@ -34,6 +34,9 @@ Google Sheets serves as a dynamic backup data storage option due to its cloud-ba
 ### Data Storage In SQLITE3
 SQLITE3 is the primary form of storage for this application. It was chosen for its efficiency and ease in finding, appending, and removing objects from a SQL table. SQL requests were made to prohibit the use of SQL injections through the use of placeholders such as ```?```.
 
+### Regulating Data Input
+The FBLA Finder regulates what data can be inputed. It has a max character limit of 40 characters, It limits the characters that can be used so it further increases the integrity of the SQL database.
+
 ## Key Features
 
 ### Update

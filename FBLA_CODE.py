@@ -172,7 +172,7 @@ def show_warning():
     
 
 def input_check(input):
-    acceptable_char = ['+', '-', '#', '/', '.', '@', '(', ')']
+    acceptable_char = ['+', '-', '#', '/', '.', '@', '(', ')', ' ']
     # Convert input to string
     try:
         input = str(input)
